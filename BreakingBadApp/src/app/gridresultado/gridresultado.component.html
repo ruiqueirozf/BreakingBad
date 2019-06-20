@@ -1,0 +1,52 @@
+<body>
+  <div class="container">
+<!-- Row Filtrar por vivo, morto, todos-->    
+    <div class="row">
+      <div class="col-md-6">
+        <h2>
+          Personagens
+        </h2>  
+      </div>
+      <div class="col-md-2" id="filtrarPor">
+        <h3 style="text-align: right">
+          Filtrar por:
+        </h3>  
+      </div>
+      <div class="col-md-1">
+        <h5>
+          <button class="btn btn-outline-success" type="submit">Vivo</button>
+        </h5>  
+      </div>
+      <div class="col-md-1">
+        <h5>
+          <button class="btn btn-outline-danger" type="submit">Morto</button>
+        </h5>  
+      </div>
+      <div class="col-md-1">
+        <h5>
+          <button class="btn btn-outline-light" type="submit">Todos</button>
+        </h5>  
+      </div>
+    </div>
+<!-- FIM Row Filtrar por vivo, morto, todos-->
+<!-- input pesquisar personagens-->   
+    <div id="buscar" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" 
+      placeholder="Pesquisar" aria-label="Pesquisar" [(ngModel)]="filtroLista">
+    </div>
+    <h3>Você pesquisou por: {{filtroLista}}</h3>
+<!-- FIM input pesquisar personagens--> 
+<!-- Blocos personagens --> 
+    <div class="row">
+      <div *ngFor="let personagem of personagensFiltrados" class="col-12 col-md-4 col-lg-3">
+        <div id="bloco">
+          <p>{{personagem.status}}</p>
+          <h4>{{personagem.name}}</h4>
+          <h5>{{personagem.birthday}}</h5>
+          <h6>{{personagem.occupation}}</h6>
+        </div>   
+      </div>
+<!-- FIM Blocos personagens --> 
+    </div>
+  </div>
+</body>

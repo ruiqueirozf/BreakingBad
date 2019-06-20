@@ -1,0 +1,54 @@
+body {
+    background-color: black;
+}
+
+#buscar {
+    margin-top: 5%; 
+}
+
+#bloco {
+    width: 200px;
+    height: 260px;
+    background-color: aqua;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+
+p {
+   color: black;   
+   width: 100px;
+   height: 52px;
+   background-color: blueviolet;
+   text-align: right;
+   padding-top: 2%;
+   padding-right: 5px;
+   margin-left: auto;
+}
+
+h2 {
+    color: white;
+}
+
+h3 {
+    font-size: 16px;
+    color: white;
+    padding-top: 10px;
+}
+
+h4 {
+    font-size: 18px;
+    margin-top: 55%;
+}
+
+h5 {
+    font-size: 13px;
+}
+
+h6 {
+    font-size: 12px;
+}
+
+h4, h5, h6 {
+    padding-left: 10px;
+    padding-right: 5px;
+}

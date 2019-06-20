@@ -1,0 +1,14 @@
+body {
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    padding-bottom: 3%;
+}
+
+form {
+    padding-top: 8%;
+}
+
+a {
+    color: white;
+}
