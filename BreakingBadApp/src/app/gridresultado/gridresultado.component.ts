@@ -9,13 +9,12 @@ import { HttpClient } from '@angular/common/http';
 export class GridresultadoComponent implements OnInit {
 
   aFiltroLista: string;
-  personagensFiltrados: any = [];
-
+  personagensFiltrados: any;
   personagens: any;
-  personagensMortos: any;
 
-  baseUrl = 'https://frontendtestesamba.free.beeceptor.com/breaking-bad/suggestions';
-
+  // altura e largura das imagens dos personagens
+  imagemAltura = 260;
+  imagemLargura = 200;
 
   get filtroLista(): string {
     return this.aFiltroLista;
@@ -23,28 +22,17 @@ export class GridresultadoComponent implements OnInit {
 
   set filtroLista(value: string) {
     this.aFiltroLista = value;
-    this.personagensFiltrados = this.filtroLista
-     ? this.filtrarPersonagens(this.filtroLista)
-     : this.personagens;
+    this.personagensFiltrados = this.filtrarPersonagens(value);
   }
-
-  // get filtroVivos(): string {
-  //   return this.aFiltroVivos;
-  // }
-
-  // set filtroVivos(value: string) {
-  //   this.aFiltroVivos = value;
-  //   this.personagensVivos = this.filtroVivos
-  //    ? this.filtrarVivos()
-  //    : this.personagens;
-  // }
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    // chamar o método getPersonagens para inciar o sistema com a variavel já preenchida com os personagens.
     this.getPersonagens();
   }
 
+  // método para filtrar os personagens
   filtrarPersonagens(filtrarPor: string): any {
     filtrarPor = filtrarPor.toLocaleLowerCase();
     return this.personagens.filter(
@@ -52,37 +40,51 @@ export class GridresultadoComponent implements OnInit {
     );
   }
 
-  // // testeFiltro: any = [];
-  // filtrarVivos(): any {
+  // método para filtrar os personagens vivos
+  filtrarVivos(): any {
+    status = 'Alive';
+    status = status.toLocaleLowerCase();
+    this.personagensFiltrados = this.personagens;
 
-  //   this.testeFiltro = this.personagens.filter(
-  //     personagem => personagem.status === 'Alive'
-  //   );
-  //   console.log(this.testeFiltro);
-  //   return this.testeFiltro;
-  // }
+    console.log('Entrou vivo'); // teste
 
+    return this.personagensFiltrados.filter(
+      personagem => personagem.name.toLocaleLowerCase().indexOf(this.aFiltroLista) !== -1 &&
+      personagem.status.toLocaleLowerCase().indexOf(status) !== -1
+    );
+  }
+
+  // método para filtrar os personagens mortos
+  filtrarMortos(): any {
+    status = 'Deceased';
+    status = status.toLocaleLowerCase();
+    this.personagensFiltrados = this.personagens;
+
+    console.log('Entrou morto'); // teste
+
+    return this.personagensFiltrados.filter(
+      personagem => personagem.name.toLocaleLowerCase().indexOf(this.aFiltroLista) !== -1 &&
+      personagem.status.toLocaleLowerCase().indexOf(status) !== -1
+    );
+  }
+
+  // metodo get simples para consumir a api e preencher as variáveis com os personagens da série
   getPersonagens() {
     this.http.get('https://www.breakingbadapi.com/api/characters').subscribe(response => {
       this.personagens = response;
-      console.log(response);
+      this.personagensFiltrados = response;
+      console.log(response); // teste
      }, error => {
        console.log(error);
      });
+  }
+
+  // Métodos para preencher a variavel com os personagens já filtrados.
+  getPersonagensVivos() {
+    this.personagensFiltrados = this.filtrarVivos();
   }
 
   getPersonagensMortos() {
-    this.http.get('https://www.breakingbadapi.com/api/deaths').subscribe(response => {
-      this.personagensMortos = response;
-      console.log(response);
-     }, error => {
-       console.log(error);
-     });
+    this.personagensFiltrados = this.filtrarMortos();
   }
-
-
-  // postSugestao(message: string, author: string) {
-  //   return this.http.post(this.baseUrl, sugestao);
-  // }
-
 }

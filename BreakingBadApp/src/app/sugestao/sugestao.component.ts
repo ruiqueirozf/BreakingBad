@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-sugestao',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SugestaoComponent implements OnInit {
 
-  constructor() { }
+  baseUrl = 'https://frontendtestesamba.free.beeceptor.com/breaking-bad/suggestions';
+  form: FormGroup;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
+
+
+  enviarSugestao(autor: string, mensagem: string): Observable<string> {
+    return this.http.post<any>(
+      this.baseUrl,
+      JSON.stringify(this.form));
+
+  }
+
+  // onSubmit(): void {
+  //   console.log(this.form.value);
+  // }
 
 }

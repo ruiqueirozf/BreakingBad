@@ -1,0 +1,34 @@
+<body>
+  <div class="container">
+    <div class="row">
+      <div id="titulo" class="col-md-6">
+        <h2>Episódios</h2>
+      </div>
+        <div id="titulo" class="col-md-6" class="form-inline my-2 my-lg-0">
+          <h5>Nome episódio: &nbsp;&nbsp;&nbsp;</h5> 
+          <input class="form-control mr-sm-2" type="search" 
+          placeholder="Pesquisar" aria-label="Pesquisar" [(ngModel)]="filtroLista">          
+        </div>
+    </div>  
+    <div class="row">
+      <!-- Lista de episódios-->
+      <div *ngFor="let episodio of episodiosFiltrados | paginate: {itemsPerPage: 4, currentPage: pageActual}" class="col-12">
+        <table>
+          <tr>
+            <td>
+              <h6>{{episodio.title}}</h6>Season {{episodio.season}} - Episódio {{episodio.episode}}
+            </td>
+            <td>
+              <h6>Data da estreia:</h6> {{episodio.air_date}}
+            </td>
+            <td>
+              <h6>Personagens:</h6>{{episodio.characters}}
+            </td>
+          </tr>
+        </table>          
+        <hr>        
+      </div>
+      <pagination-controls class="my-pagination" (pageChange)='pageActual = $event'></pagination-controls>
+    </div>
+  </div>
+</body>

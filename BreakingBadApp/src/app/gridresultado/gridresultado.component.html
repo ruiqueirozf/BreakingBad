@@ -1,6 +1,6 @@
 <body>
   <div class="container">
-<!-- Row Filtrar por vivo, morto, todos-->    
+    <!-- Row Filtrar por vivo, morto, todos-->    
     <div class="row">
       <div class="col-md-6">
         <h2>
@@ -14,39 +14,49 @@
       </div>
       <div class="col-md-1">
         <h5>
-          <button class="btn btn-outline-success" type="submit">Vivo</button>
+          <button class="btn btn-outline-success" type="submit" (click)="getPersonagensVivos()">Vivo</button>
         </h5>  
       </div>
       <div class="col-md-1">
         <h5>
-          <button class="btn btn-outline-danger" type="submit">Morto</button>
+          <button class="btn btn-outline-danger" type="submit" (click)="getPersonagensMortos()">Morto</button>
         </h5>  
       </div>
       <div class="col-md-1">
         <h5>
-          <button class="btn btn-outline-light" type="submit">Todos</button>
+          <button class="btn btn-outline-light" type="submit" (click)="getPersonagens()">Todos</button>
         </h5>  
       </div>
     </div>
-<!-- FIM Row Filtrar por vivo, morto, todos-->
-<!-- input pesquisar personagens-->   
+    <!-- FIM Row Filtrar por vivo, morto, todos-->
+    <!-- input pesquisar personagens-->   
     <div id="buscar" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" 
       placeholder="Pesquisar" aria-label="Pesquisar" [(ngModel)]="filtroLista">
     </div>
     <h3>Você pesquisou por: {{filtroLista}}</h3>
-<!-- FIM input pesquisar personagens--> 
-<!-- Blocos personagens --> 
+    <!-- FIM input pesquisar personagens--> 
+    <!-- Blocos personagens --> 
     <div class="row">
-      <div *ngFor="let personagem of personagensFiltrados" class="col-12 col-md-4 col-lg-3">
-        <div id="bloco">
+      <div *ngFor="let personagem of personagensFiltrados | paginate: {itemsPerPage: 8, currentPage: pageActual}" class="col-12 col-md-4 col-lg-3">
+        <div id="bloco" [style.width.px]="imagemLargura" [style.height.px]="imagemAltura"
+        [ngStyle]="{'background-image': 'url(' + personagem.img + ')'}">
+        <div *ngIf='personagem.status == "Alive"'>
           <p>{{personagem.status}}</p>
-          <h4>{{personagem.name}}</h4>
-          <h5>{{personagem.birthday}}</h5>
-          <h6>{{personagem.occupation}}</h6>
-        </div>   
+        </div>
+        <div id="statusDeceased" *ngIf='personagem.status == "Deceased"'>
+          <p>{{personagem.status}}</p>
+        </div>
+        <div id="statusPresumed" *ngIf='personagem.status == "Presumed dead"'>
+          <p>{{personagem.status}}</p>
+        </div>
+        <h4>{{personagem.name}}</h4>
+        <h5>{{personagem.birthday}}</h5>
+        <h6>{{personagem.occupation}}</h6>
       </div>
-<!-- FIM Blocos personagens --> 
+      <!-- FIM Blocos personagens --> 
     </div>
   </div>
+</div>
+<pagination-controls class="my-pagination" (pageChange)='pageActual = $event'></pagination-controls>
 </body>

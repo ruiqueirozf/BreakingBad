@@ -7,22 +7,46 @@ body {
 }
 
 #bloco {
-    width: 200px;
-    height: 260px;
-    background-color: aqua;
+    color: white;
     margin-bottom: 15px;
     padding-top: 10px;
+    /*background-color: aqua;*/
 }
 
 p {
-   color: black;   
-   width: 100px;
-   height: 52px;
-   background-color: blueviolet;
+   color: white;   
+   width: 85px;
+   height: 48px;
+   background-color: green;
    text-align: right;
    padding-top: 2%;
    padding-right: 5px;
    margin-left: auto;
+   font-size: 18px;
+}
+
+#statusDeceased p {
+    color: white;   
+    width: 85px;
+    height: 48px;
+    background-color: orange;
+    text-align: right;
+    padding-top: 2%;
+    padding-right: 5px;
+    margin-left: auto;
+    font-size: 16px;
+}
+
+#statusPresumed p {
+    color: white;   
+    width: 85px;
+    height: 48px;
+    background-color: purple;
+    text-align: right;
+    padding-right: 5px;
+    margin-left: auto;
+    font-size: 16px;
+    padding-top: 0%;
 }
 
 h2 {
@@ -51,4 +75,20 @@ h6 {
 h4, h5, h6 {
     padding-left: 10px;
     padding-right: 5px;
+}
+
+.my-pagination /deep/ .ngx-pagination .pagination-next a{
+    color: white;
+}
+
+.my-pagination /deep/ .ngx-pagination .pagination-previous a{
+    color: white;
+}
+
+.my-pagination /deep/ .ngx-pagination span {
+    color:white;
+}
+
+.my-pagination /deep/ .ngx-pagination {
+    min-height: 50px;
 }
