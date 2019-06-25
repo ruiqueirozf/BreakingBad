@@ -1,5 +1,11 @@
+html, body {
+    height:100%;
+}
+
 body {
     background-color: black;
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #buscar {
@@ -11,6 +17,7 @@ body {
     margin-bottom: 15px;
     padding-top: 10px;
     /*background-color: aqua;*/
+    box-shadow: 0px 0px 2px 0px rgba(255,255,255,1);
 }
 
 p {
@@ -23,6 +30,8 @@ p {
    padding-right: 5px;
    margin-left: auto;
    font-size: 18px;
+   border-radius: 2px;
+   box-shadow: 100%; 
 }
 
 #statusDeceased p {
@@ -89,6 +98,7 @@ h4, h5, h6 {
     color:white;
 }
 
-.my-pagination /deep/ .ngx-pagination {
+.my-pagination /deep/ .ngx-pagination a:hover {
     min-height: 50px;
+    background: #2199e8;
 }

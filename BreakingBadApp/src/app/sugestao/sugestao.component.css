@@ -1,6 +1,7 @@
 body {
     background-color: black;
     height: 100vh;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* textarea {
@@ -17,6 +18,10 @@ input {
     margin-right: auto;
 }
 
+#msg input {
+    height: 100px;
+}
+
 label {
     color: white;
     display: block;
@@ -28,4 +33,8 @@ button {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#msg {
+    min-height: 200px;
 }

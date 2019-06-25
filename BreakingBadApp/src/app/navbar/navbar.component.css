@@ -3,12 +3,9 @@ body {
     color: white;
     font-size: 15px;
     padding-bottom: 3%;
+    font-family: 'Open Sans', sans-serif;
 }
 
-form {
-    padding-top: 8%;
-}
-
-a {
-    color: white;
+h2 {
+ margin-right: 100px;
 }

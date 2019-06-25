@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormGroup } from '@angular/forms';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-sugestao',
@@ -19,12 +20,13 @@ export class SugestaoComponent implements OnInit {
   }
 
 
-  enviarSugestao(autor: string, mensagem: string): Observable<string> {
-    return this.http.post<any>(
-      this.baseUrl,
-      JSON.stringify(this.form));
+//   enviarSugestao(autor: string, mensagem: string): Observable<string> {
+//     return this.http.post<any>(this.baseUrl,
+//     this.form.value).subscribe((response) => {
+//       console.log('response ', response);
+//     });
+// }
 
-  }
 
   // onSubmit(): void {
   //   console.log(this.form.value);

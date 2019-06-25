@@ -8,7 +8,7 @@
         </h2>  
       </div>
       <div class="col-md-2" id="filtrarPor">
-        <h3 style="text-align: right">
+        <h3>
           Filtrar por:
         </h3>  
       </div>
@@ -38,25 +38,25 @@
     <!-- FIM input pesquisar personagens--> 
     <!-- Blocos personagens --> 
     <div class="row">
-      <div *ngFor="let personagem of personagensFiltrados | paginate: {itemsPerPage: 8, currentPage: pageActual}" class="col-12 col-md-4 col-lg-3">
-        <div id="bloco" [style.width.px]="imagemLargura" [style.height.px]="imagemAltura"
-        [ngStyle]="{'background-image': 'url(' + personagem.img + ')'}">
-        <div *ngIf='personagem.status == "Alive"'>
-          <p>{{personagem.status}}</p>
+        <div *ngFor="let personagem of personagensFiltrados | paginate: {itemsPerPage: 8, currentPage: pageActual}" class="col-12 col-md-4 col-lg-3">
+          <div id="bloco" alt='personagem.name' [style.width.px]="imagemLargura" [style.height.px]="imagemAltura"
+            [ngStyle]="{'background-image': 'url(' + personagem.img + ')'}">
+              <div *ngIf='personagem.status == "Alive"'>
+                <p>{{personagem.status}}</p>
+              </div>
+              <div id="statusDeceased" *ngIf='personagem.status == "Deceased"'>
+                <p>{{personagem.status}}</p>
+              </div>
+              <div id="statusPresumed" *ngIf='personagem.status == "Presumed dead"'>
+                <p>{{personagem.status}}</p>
+              </div>
+              <h4>{{personagem.name}}</h4>
+              <h5>{{personagem.birthday}}</h5>
+              <h6>{{personagem.occupation}}</h6>
+          </div>
         </div>
-        <div id="statusDeceased" *ngIf='personagem.status == "Deceased"'>
-          <p>{{personagem.status}}</p>
-        </div>
-        <div id="statusPresumed" *ngIf='personagem.status == "Presumed dead"'>
-          <p>{{personagem.status}}</p>
-        </div>
-        <h4>{{personagem.name}}</h4>
-        <h5>{{personagem.birthday}}</h5>
-        <h6>{{personagem.occupation}}</h6>
-      </div>
-      <!-- FIM Blocos personagens --> 
+        <!-- FIM Blocos personagens -->
     </div>
+    <pagination-controls class="my-pagination" (pageChange)='pageActual = $event'></pagination-controls>
   </div>
-</div>
-<pagination-controls class="my-pagination" (pageChange)='pageActual = $event'></pagination-controls>
 </body>
