@@ -1,13 +1,13 @@
 <body>
   <div class="container">    
     <div class="formularioSugestao">
-      <form [formGroup]="form" (ngSubmit)="enviarSugestao()">       
+      <form (ngSubmit)="enviarSugestao()" #form1="ngForm">       
         <label for="exampleFormControlInput1">Envie sua sugestão</label> 
         <div class="form-group">
-          <input formControlName="autor" type="text" class="form-control" placeholder="Autor">
+          <input name="autor" [(ngModel)]="autor" type="text" class="form-control" placeholder="Autor">
         </div>
         <div id="msg" class="form-group">
-          <input  formControlName="mensagem" type="text" class="form-control"  placeholder="Mensagem">
+          <input  name="mensagem" [(ngModel)]="mensagem" type="text" class="form-control"  placeholder="Mensagem">
         </div>
         <h5>
           <button class="btn btn-outline-success" type="submit" (onclick)="enviarSugestao()">Enviar</button>

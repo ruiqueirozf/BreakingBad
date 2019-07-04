@@ -38,7 +38,7 @@
     <!-- FIM input pesquisar personagens--> 
     <!-- Blocos personagens --> 
     <div class="row">
-        <div *ngFor="let personagem of personagensFiltrados | paginate: {itemsPerPage: 8, currentPage: pageActual}" class="col-12 col-md-4 col-lg-3">
+        <div *ngFor="let personagem of personagensFiltrados | paginate: {itemsPerPage: 8, currentPage: page}" class="col-12 col-md-4 col-lg-3">
           <div id="bloco" alt='personagem.name' [style.width.px]="imagemLargura" [style.height.px]="imagemAltura"
             [ngStyle]="{'background-image': 'url(' + personagem.img + ')'}">
               <div *ngIf='personagem.status == "Alive"'>
@@ -57,6 +57,6 @@
         </div>
         <!-- FIM Blocos personagens -->
     </div>
-    <pagination-controls class="my-pagination" (pageChange)='pageActual = $event'></pagination-controls>
+    <pagination-controls class="my-pagination" (pageChange)='page = $event'></pagination-controls>
   </div>
 </body>

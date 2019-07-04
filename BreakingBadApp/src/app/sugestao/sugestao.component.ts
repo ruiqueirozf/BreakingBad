@@ -14,11 +14,34 @@ export class SugestaoComponent implements OnInit {
   baseUrl = 'https://frontendtestesamba.free.beeceptor.com/breaking-bad/suggestions';
   form: FormGroup;
 
+  autor: '';
+  mensagem: '';
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
 
+  doPost(autor: string, mensagem: string) {
+    this.http.post<any>(this.baseUrl,
+      JSON.stringify({autor,
+        mensagem,
+       })
+
+      // {autor,
+      //   mensagem
+      // }
+      ).subscribe(res => console.log(res));
+
+
+    console.log(autor);
+    console.log(mensagem);
+
+  }
+
+  enviarSugestao() {
+    this.doPost(this.autor, this.mensagem);
+  }
 
 //   enviarSugestao(autor: string, mensagem: string): Observable<string> {
 //     return this.http.post<any>(this.baseUrl,

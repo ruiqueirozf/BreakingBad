@@ -11,6 +11,7 @@ export class GridresultadoComponent implements OnInit {
   aFiltroLista: string;
   personagensFiltrados: any;
   personagens: any;
+  page: any;
 
   // altura e largura das imagens dos personagens
   imagemAltura = 260;
