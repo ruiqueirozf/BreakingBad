@@ -12,10 +12,21 @@ import { HttpHeaders } from '@angular/common/http';
 export class SugestaoComponent implements OnInit {
 
   baseUrl = 'https://frontendtestesamba.free.beeceptor.com/breaking-bad/suggestions';
+
+  // httpOptions = {responseType: 'text'};
+
+  // httpOptions = {
+  //   responseType: 'text'
+  // };
+
+
   form: FormGroup;
 
   autor: '';
   mensagem: '';
+
+  page: any;
+
 
   constructor(private http: HttpClient) { }
 
@@ -23,21 +34,22 @@ export class SugestaoComponent implements OnInit {
   }
 
   doPost(autor: string, mensagem: string) {
+
+    const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+
     this.http.post<any>(this.baseUrl,
-      JSON.stringify({autor,
-        mensagem,
-       })
 
-      // {autor,
-      //   mensagem
-      // }
+      JSON.stringify({autor, mensagem }),
+
+      { headers, responseType: 'text' as 'json'}
+
       ).subscribe(res => console.log(res));
-
 
     console.log(autor);
     console.log(mensagem);
 
   }
+
 
   enviarSugestao() {
     this.doPost(this.autor, this.mensagem);
